@@ -94,9 +94,53 @@ names =
 #转置（transpose）
 
 
+#实现1000步的随机漫步
+import random
+position = 0
+walk = [position]
+steps = 999
+for i in range(steps):
+    
+    step = 1 if random.randint(0, 1) else -1
+    position += step
+    
+    walk.append(position)
+import matplotlib.pyplot as plt
+l = [i+1 for i in range(steps+1)]
+plt.plot(l,walk)
 
 
+import numpy as np
+nsteps = 1000
+draws = np.random.randint(0, 2, size = nsteps)
+steps = np.where(draws > 0, 1, -1)
+walk = steps.cumsum()
+walk2 = steps.cumsum()
+walk2.min()
+walk2.max()
 
+(np.abs(walk2)>= 10).argmax()
+#argmax() 它返回该布尔型数组第一个最大值的索引（True为最大值）
+
+#一次模拟多个随机漫步
+#5000个
+import numpy as np
+nwalks5 = 5000
+nsteps5 = 1000
+draws5 = np.random.randint(0, 2, size= (nwalks5, nsteps5)) #0或1
+steps5 = np.where(draws5> 0, 1 , -1)
+walks5 = steps5.cumsum(1)
+walks5
+walks5.max()
+walks5.min()
+
+
+hit30 = (np.abs(walks5)>= 30).any(1)
+hit30
+
+hit30.sum() #到达30或 -30的数量
+
+crossing_times = (np.abs(walks5[hit30])>= 30).argmax(1)		
 
 
 
