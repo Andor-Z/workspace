@@ -93,7 +93,12 @@ df = DataFrame(data)
 	如果赋值的是一个Series就会精确匹配DataFrame的索引，空位将会补上缺失值  
 删除：
 `del df['year']`  
-`df.columns`  
+`df.columns`   
+
+##基本功能
+###重新索引
+####reindex   
+创建一个适应新索引的新对象  
 
 
 
