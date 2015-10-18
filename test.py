@@ -1,14 +1,11 @@
-from pandas import Series, DataFrame
-import pandas as pd 
-obj = Series(range(3), index= ['a', 'b', 'c'])
-index = obj.index
+import urllib.request  as ur #2中的urllib2
+import http.cookiejar  as hc #2中的cookielib
+url = input('please enter url:')
 
-index[1:]
-
-
-
-t = 123, 456, 'hello!'
-x, y, z = t #序列拆分
-print(x)
-print(t)
-print('he')
+cookie = hc.CookieJar()  #声明一个cookjar对象实例来保存cookie
+handler = ur.HTTPCookieProcessor(cookie)  #利用urllib.request中的HTTPCookieProcessor来创建cookie处理器
+opener = ur.build_opener(handler)
+response = opener.open(url)
+for item in cookie:
+	print('Name = ' + item.name)
+	print('Value = ' + item.values)
