@@ -8,7 +8,7 @@ headers = {'User-Agent' : user_agent}
 try:
 	request = ur.Request(url, headers = headers)
 	response = ur.urlopen(request)
-	print(response.read())
+	#print(response.read())
 except urllib.error.URLError as e:  #3中URLError归到urllib.error中了
 	if hasattr(e, 'code'):
 		print(e.code)
@@ -20,6 +20,6 @@ content = response.read().decode('utf-8')
 pattern = re.compile('<div.*?author">.*?<a.*?<img.*?>(.*?)</a>.*?<div.*?'+
                          'content">(.*?)<!--(.*?)-->.*?</div>(.*?)<div class="stats.*?class="number">(.*?)</i>',re.S)
 items = re.findall(pattern, content)
-for items in items:
+for item in items:
 	print(item[0],item[1], item[2], item[3],item[4])
 
