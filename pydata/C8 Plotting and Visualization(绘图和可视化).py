@@ -91,7 +91,6 @@ def fig_ex():
 
 
 # 注解 以及在subplot 上绘图
-# 注解  text arrow  annotate
 
 # text 可以将文本绘制在图表的指定坐标
 ax.text(x, y, 'Hellow plot', family= 'monospace', frontsize = 10)
