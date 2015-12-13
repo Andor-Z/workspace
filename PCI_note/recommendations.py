@@ -23,7 +23,7 @@ critics={'Lisa Rose': {'Lady in the Water': 2.5, 'Snakes on a Plane': 3.5,
 
 from math import sqrt
 #返回一个有关person1与person2 的基于距离的相似度评价
-def sim_distace(person1, person2, prefs = critics):
+def sim_distance(person1, person2, prefs = critics):
 	#得到shared_items的列表
 	si = {}
 	for item in prefs[person1]:
@@ -39,7 +39,7 @@ def sim_distace(person1, person2, prefs = critics):
 
 	return 1/(1 + sqrt(sum_of_squares))
 
-#s = sim_distace(critics, 'Lisa Rose', 'Gene Seymour')
+#s = sim_distance(critics, 'Lisa Rose', 'Gene Seymour')
 
 
 p = {}
@@ -53,12 +53,17 @@ for person1 in critics:
 				p[person1+' and ' +person2] = a
 			#p[person1+' and ' +person2] = sorted([person1, person2])
 
-all_sim_distace = p.copy()
+all_sim_distance = p.copy()
 for i in p:
-	#sim[p[i]] = sim_distace(*p[i])
-	all_sim_distace[i] = sim_distace(*p[i])
+	#sim[p[i]] = sim_distance(*p[i])
+	all_sim_distance[i] = sim_distance(*p[i])
+from pandas import Series, DataFrame
 
+#all_sim_distance_df =DataFrame(all_sim_distance)
+print(all_sim_distance)
 
-
+def all_sim_distances(perfs):
+	for p1 in perfs:
+		
 
 
